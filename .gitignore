@@ -1,0 +1,8 @@
+.vs
+.idea
+.DS_Store
+**/*/bin
+**/*/obj
+**/*/wwwroot/lib
+*.csproj.user
+*.sln.DotSettings.user
