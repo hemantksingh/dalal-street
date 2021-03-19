@@ -30,7 +30,10 @@ namespace contentapi
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "contentapi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { 
+                    Title = "Stock Content Api",
+                    Description = "API for retrieving stock information for fundamental analysis",
+                    Version = "v1" });
             });
         }
 
@@ -41,7 +44,7 @@ namespace contentapi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "contentapi v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Stock Content Api v1"));
             }
 
             app.UseHttpsRedirection();
