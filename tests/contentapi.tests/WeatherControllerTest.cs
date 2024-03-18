@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
+using Newtonsoft.Json;
 
 namespace contentapi.tests;
 
@@ -16,12 +17,15 @@ public class WeatherControllerTest
         var testServer = new TestServer(new WebHostBuilder().UseStartup<Startup>());
         _httpClient = testServer.CreateClient();
     }
+
     [Fact]
     public async Task GetsWeather()
     {
         var response = await _httpClient.GetAsync("/weather");
         response.EnsureSuccessStatusCode();
         var responseString = await response.Content.ReadAsStringAsync();
-        Assert.NotEmpty(responseString);
+        dynamic weatherList = JsonConvert.DeserializeObject(responseString) ??
+                              throw new InvalidOperationException("Response cannot be null");
+        Assert.Equal(5, weatherList.Count);
     }
 }
