@@ -6,16 +6,19 @@ namespace marketswebapp.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly ContentApi _contentApi;
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ContentApi contentApi, ILogger<HomeController> logger)
     {
+        _contentApi = contentApi;
         _logger = logger;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        IEnumerable<WeatherForecast>? forecast = await _contentApi.GetWeather();
+        return View(forecast);
     }
 
     public IActionResult Privacy()

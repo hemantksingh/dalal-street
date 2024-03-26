@@ -1,8 +1,39 @@
-﻿@{
+﻿@model IEnumerable<WeatherForecast>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="text-center">
+                <h1 class="display-4">Welcome</h1>
+                <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+            </div>
+
+            <div class="text-center">
+                <h3 class="display-8">@Model.Count() Day Weather Forecast </h3>
+            </div>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Temperature (°C)</th>
+                        <th>Summary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TemperatureC)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Summary)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

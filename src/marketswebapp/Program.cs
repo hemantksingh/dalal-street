@@ -1,7 +1,11 @@
+using marketswebapp;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
+builder.Services.AddTransient<ContentApi>();
 
 var app = builder.Build();
 

@@ -1,0 +1,52 @@
+{
+  "consumer": {
+    "name": "Markets app"
+  },
+  "interactions": [
+    {
+      "description": "A GET request to the weather endpoint",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "Some Markets Provider API"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/weather"
+      },
+      "response": {
+        "body": {
+          "content": [
+            {
+              "Date": "2024-03-26T14:19:44.805818+00:00",
+              "Summary": "Freezing",
+              "TemperatureC": -10
+            }
+          ],
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "status": 200
+      },
+      "type": "Synchronous/HTTP"
+    }
+  ],
+  "metadata": {
+    "pactRust": {
+      "ffi": "0.4.16",
+      "models": "1.1.19"
+    },
+    "pactSpecification": {
+      "version": "4.0"
+    }
+  },
+  "provider": {
+    "name": "Markets Content API"
+  }
+}
